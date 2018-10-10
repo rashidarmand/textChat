@@ -1,0 +1,32 @@
+<h1><u>Text Chat App</u></h1>
+
+<div class="input-group input-group-lg">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-lg">Message</span>
+  </div>
+  <input #message id="messages" placeholder="Enter your message" type="text" class="form-control" aria-label="Message post" aria-describedby="button-addon2">
+  <div class="input-group-append">
+    <button (click)="newMessage(message.value)" class="btn btn-outline-primary" type="button" id="button-addon2">Post Message</button>
+  </div>
+</div>
+<br>
+<br>
+<section class="container">
+  <div class="card" *ngFor="let message of messages.slice().reverse() | async; let i = index" >
+    <h4 class="card-header bg-secondary text-white" *ngIf="i % 2 !== 0; else odd">
+      Post #{{ i + 1 }}
+    </h4>
+    <ng-template #odd>
+      <h4 class="card-header bg-primary text-white">
+        Post #{{ i + 1 }}
+      </h4>
+    </ng-template>
+    <div class="card-body">
+      <!-- <h5 class="card-title">Special title treatment</h5> -->
+      <p class="card-text">
+        {{ message }}
+      </p>
+    </div>
+  </div>
+</section>
+

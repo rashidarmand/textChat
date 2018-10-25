@@ -26,4 +26,8 @@ export class ChatComponent implements OnInit {
     this.db.list('chat_messages').push(message);
   }
 
+  deletePosts() {
+    this.db.list('chat_messages').remove();
+    alert("Thanks for testing out the app. Come again !")
+  }
 }
